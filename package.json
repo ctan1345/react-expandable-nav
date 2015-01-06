@@ -1,12 +1,17 @@
 {
   "name": "react-expandable-nav",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React component for twitch-like navbar layout",
   "main": "build/index.js",
   "directories": {
     "example": "example"
   },
   "dependencies": {
+    "lodash.assign": "^2.4.1",
+    "lodash.zip": "^2.4.1"
+  },
+  "devDependencies": {
+    "mocha": "^2.1.0",
     "chai": "^1.10.0",
     "grunt": "^0.4.5",
     "grunt-browserify": "^3.2.1",
@@ -19,9 +24,6 @@
     "karma-mocha": "^0.1.10",
     "karma-phantomjs-launcher": "^0.1.4",
     "karma-sinon": "^1.0.4",
-    "lodash": "^2.4.1",
-    "lodash.assign": "^2.4.1",
-    "lodash.zip": "^2.4.1",
     "mocha-phantomjs": "^3.5.2",
     "phantomjs": "^1.9.13",
     "react": "^0.12.1",
@@ -31,13 +33,9 @@
     "sinon": "^1.12.2",
     "grunt-webpack": "^1.0.8",
     "webpack-dev-server": "^1.6.4",
-    "keymirror": "^0.1.0",
     "react-hot-loader": "^0.5.0",
     "webpack": "^1.4.13",
     "jsx-loader": "^0.12.2"
-  },
-  "devDependencies": {
-    "mocha": "^2.1.0"
   },
   "scripts": {
     "test": "grunt test"
