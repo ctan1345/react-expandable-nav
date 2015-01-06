@@ -28,14 +28,6 @@ module.exports = function(grunt) {
       }
     },
     browserify: {
-      src: {
-        files: {
-          'build/React-Expandable-Nav.js': ['./build/React-Expandable-Nav.js']
-        },
-        browserifyOptions: {
-          standalone: true
-        }
-      },
       test: {
         files: {
           'test_bundle.js': ['./test-built/**/*.js']
@@ -81,6 +73,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-jsxhint');
 
-  grunt.registerTask('build', ['jshint:all', 'react:src', 'react:test', 'browserify:test', 'karma', 'browserify:src']);
+  grunt.registerTask('build', ['jshint:all', 'react:src', 'react:test', 'browserify:test', 'karma']);
   grunt.registerTask('test', ['react:src', 'react:test', 'browserify:test', 'karma']);
 };
