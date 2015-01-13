@@ -14,9 +14,13 @@ var ExpandableNav = require('../../src/components/ExpandableNav'),
 {
   /*jslint browser: true */
   window.React = React;
+  var $ = window.$;
 }
 
 var App = React.createClass({
+  componentDidMount() {
+    $('[data-toggle="tooltip"]').tooltip();
+  },
   render() {
     var headerSmall = <span className="logo">&lt;B&gt;</span>;
     var headerFull = <span>&lt;Bootstrap&gt;</span>;
@@ -32,7 +36,7 @@ var App = React.createClass({
       <span>Contact us</span>
     ];
     var menuItemsNodes = zip(menuItemsSmall, menuItemsFull).map((menuItem) => {
-      return <ExpandableNavMenuItem small={menuItem[0]} full={menuItem[1]} />;
+      return <ExpandableNavMenuItem small={menuItem[0]} full={menuItem[1]} tooltip={"example"}/>;
     });
     var headerStyle = {
       paddingLeft: 5
@@ -42,13 +46,13 @@ var App = React.createClass({
     };
     return (
       <ExpandableNav expanded={true} >
-        <ExpandableNavbar className="shared" fullClass="full" smallClass="small">
-          <ExpandableNavHeader className="ssa" small={headerSmall} full={headerFull} headerStyle={headerStyle} fullStyle={fullStyle}/>
+        <ExpandableNavbar fullClass="full" smallClass="small">
+          <ExpandableNavHeader small={headerSmall} full={headerFull} headerStyle={headerStyle} fullStyle={fullStyle}/>
           <ExpandableNavMenu>
             {menuItemsNodes}
           </ExpandableNavMenu>
         </ExpandableNavbar>
-        <ExpandableNavToggleButton fullClass="f" smallClass="s" className="shared"/>
+        <ExpandableNavToggleButton smallClass="s" className="shared"/>
         <ExpandableNavPage>
           <div className="row">
             <h2>Bootstrap Navigation meets Twitch Navigation</h2>

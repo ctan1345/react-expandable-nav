@@ -41,10 +41,16 @@ var ExpandableNavHeader = React.createClass({displayName: "ExpandableNavHeader",
     var classes = "navbar-header " +
       joinClasses(this.props.className, this.props.expanded ? this.props.fullClass : this.props.smallClass);
 
+    var navItemStyle = {
+      cursor: 'pointer'
+    };
     return (
       React.createElement("div", {style: headerStyle, className: classes}, 
         React.createElement("div", {style: headerStyle, className: "navbar-brand"}, 
-          React.createElement(ExpandableNavItem, React.__spread({ref: "navItem"},  this.props, {smallStyle: smallStyle, fullStyle: fullStyle}))
+          React.createElement(ExpandableNavItem, {style: navItemStyle, ref: "navItem", 
+            smallStyle: smallStyle, fullStyle: fullStyle, 
+            smallClass: this.props.smallClass, fullClass: this.props.fullClass, 
+            small: this.props.small, full: this.props.full, expanded: this.props.expanded})
         )
       )
     );

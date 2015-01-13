@@ -2,6 +2,8 @@
 
 var React = require('react/addons');
 
+var assign = require('lodash.assign');
+
 var ExpandableNavItem = React.createClass({displayName: "ExpandableNavItem",
   propTypes: {
     small: React.PropTypes.element,
@@ -9,8 +11,14 @@ var ExpandableNavItem = React.createClass({displayName: "ExpandableNavItem",
     smallStyle: React.PropTypes.object,
     fullStyle: React.PropTypes.object
   },
+  getDefaultProps:function() {
+    return {
+      smallStyle: {},
+      fullStyle: {}
+    }
+  },
   render:function() {
-    var style = this.props.expanded ? this.props.fullStyle : this.props.smallStyle;
+    var style = assign(this.props.expanded ? this.props.fullStyle : this.props.smallStyle, this.props.style);
 
     return (
       React.createElement("span", {style: style}, this.props.expanded ? this.props.full : this.props.small)

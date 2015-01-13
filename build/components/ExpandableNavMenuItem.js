@@ -15,7 +15,8 @@ var ExpandableNavMenuItem = React.createClass({displayName: "ExpandableNavMenuIt
     fullClass: React.PropTypes.string,
     smallStyle: React.PropTypes.object,
     fullStyle: React.PropTypes.object,
-    url: React.PropTypes.string
+    url: React.PropTypes.string,
+    tooltip: React.PropTypes.string
   },
   getDefaultProps:function() {
     var sharedStyle = {
@@ -49,11 +50,27 @@ var ExpandableNavMenuItem = React.createClass({displayName: "ExpandableNavMenuIt
     var classes = active ? 'active' : '' +
       joinClasses(this.props.className, this.props.expanded ? this.props.fullClass : this.props.smallClass);
 
+    var link;
+    var navItemStyle = {
+      cursor: 'pointer'
+    };
+    if (this.props.tooltip && !this.props.expanded) {
+      link = (
+        React.createElement("a", {ref: "link", href: url, onClick: this.props.onSelect, style: aStyle, "data-toggle": "tooltip", "data-placement": "right", title: this.props.tooltip}, 
+          React.createElement(ExpandableNavItem, React.__spread({style: navItemStyle, small: small, full: full, smallStyle: smallStyle, fullStyle: fullStyle},  props))
+        )
+      );
+    } else {
+      link = (
+        React.createElement("a", {ref: "link", href: url, onClick: this.props.onSelect, style: aStyle}, 
+          React.createElement(ExpandableNavItem, React.__spread({style: navItemStyle, small: small, full: full, smallStyle: smallStyle, fullStyle: fullStyle},  props))
+        )
+      );
+    }
+
     return (
       React.createElement("li", {className: classes, style: liStyle}, 
-        React.createElement("a", {ref: "link", href: url, onClick: this.props.onSelect, style: aStyle}, 
-          React.createElement(ExpandableNavItem, React.__spread({small: small, full: full, smallStyle: smallStyle, fullStyle: fullStyle},  props))
-        )
+        link
       )
     );
   }

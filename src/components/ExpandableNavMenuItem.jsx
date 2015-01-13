@@ -15,7 +15,11 @@ var ExpandableNavMenuItem = React.createClass({
     fullClass: React.PropTypes.string,
     smallStyle: React.PropTypes.object,
     fullStyle: React.PropTypes.object,
-    url: React.PropTypes.string
+    url: React.PropTypes.string,
+    tooltip: React.PropTypes.string
+  },
+  componentDidUpdate() {
+    $('[data-toggle="tooltip"]').tooltip();
   },
   getDefaultProps() {
     var sharedStyle = {
@@ -49,11 +53,27 @@ var ExpandableNavMenuItem = React.createClass({
     var classes = active ? 'active' : '' +
       joinClasses(this.props.className, this.props.expanded ? this.props.fullClass : this.props.smallClass);
 
+    var link;
+    var navItemStyle = {
+      cursor: 'pointer'
+    };
+    if (this.props.tooltip && !this.props.expanded) {
+      link = (
+        <a ref="link" href={url} onClick={this.props.onSelect} style={aStyle} data-toggle="tooltip" data-placement="right" title={this.props.tooltip}>
+          <ExpandableNavItem style={navItemStyle} small={small} full={full} smallStyle={smallStyle} fullStyle={fullStyle} {...props} />
+        </a>
+      );
+    } else {
+      link = (
+        <a ref="link" href={url} onClick={this.props.onSelect} style={aStyle}>
+          <ExpandableNavItem style={navItemStyle} small={small} full={full} smallStyle={smallStyle} fullStyle={fullStyle} {...props} />
+        </a>
+      );
+    }
+
     return (
       <li className={classes} style={liStyle}>
-        <a ref="link" href={url} onClick={this.props.onSelect} style={aStyle}>
-          <ExpandableNavItem small={small} full={full} smallStyle={smallStyle} fullStyle={fullStyle} {...props} />
-        </a>
+        {link}
       </li>
     );
   }
