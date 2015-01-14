@@ -19,7 +19,11 @@ var ExpandableNavMenuItem = React.createClass({
     tooltip: React.PropTypes.string
   },
   componentDidUpdate() {
-    $('[data-toggle="tooltip"]').tooltip();
+    if (this.props.expanded) {
+      $(this.refs.link.getDOMNode()).tooltip('disable');
+    } else {
+      $(this.refs.link.getDOMNode()).tooltip('enable');
+    }
   },
   getDefaultProps() {
     var sharedStyle = {
