@@ -25,6 +25,16 @@ module.exports = function(grunt) {
             ext: '.js'
           },
         ],
+      },
+      example: {
+        files: [
+          {
+            expand: true,
+            cwd: './example/',
+            src: ['**/*.jsx'],
+            dest: ''
+          }
+        ]
       }
     },
     browserify: {

@@ -39,7 +39,8 @@
   },
   "scripts": {
     "start": "node ./example/server.js",
-    "test": "grunt test"
+    "test": "grunt test",
+    "build_example": "./node_modules/.bin/webpack -p --config example/webpack.config.js"
   },
   "repository": {
     "type": "git",
