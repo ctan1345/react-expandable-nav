@@ -2,19 +2,19 @@ react-expandable-nav
 ====================
 This package is built upon Bootstrap.
 
-#Demo
-[http://ctan1345.github.io/][http://ctan1345.github.io/]
+## Demo
+[http://ctan1345.github.io/](http://ctan1345.github.io/)
 
-#Installation
+## Installation
 `npm install [--save] react-expandable-nav`
 
-#Dependenecy
-Bootstrap: [http://getbootstrap.com/][http://getbootstrap.com/]
-jQuery (for tooltip function): [http://jquery.com/][http://jquery.com/]
+## Dependenecy
+Bootstrap: [http://getbootstrap.com/](http://getbootstrap.com/)
+jQuery (for tooltip function): [http://jquery.com/](http://jquery.com/)
 
 
-#Usage
-## Basic
+## Usage
+### Basic
 The simplest example requires you to wrap everything inside `<ExpandableNavContainer>` and your contents inside `<ExpandableNavPage>`.
 You have to also define the element that is going to be rendered when the navbar expanded and not expanded.
 
@@ -54,7 +54,7 @@ You have to also define the element that is going to be rendered when the navbar
   });
 
 ```
-## Advanced usage
+### Advanced usage
 You can substitute the default toggle button with your own:
 ```javascript
   <ExpandableNavToggleButton small={<span>open</span>} full={<span>close</span>}/>
@@ -104,21 +104,21 @@ Alternatively, you can specify the class.
 ```
 
 
-#Development
+## Development
 
-##Run example
+### Run example
 ```shell
   npm install
   npm start
   open localhost:3000
 ```
 
-##Watcher
+### Watcher
 ```shell
   grunt watch
 ```
 
-#Testing
+## Testing
 ```shell
   grunt test
 ```
