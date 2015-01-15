@@ -20,7 +20,7 @@ The simplest example requires you to wrap everything inside `<ExpandableNavConta
 You have to also define the element that is going to be rendered when the navbar expanded and not expanded.
 
 ```javascript
-  var ExpandableNav = require('../../src/index');
+  var ExpandableNav = require('react-expandable-nav');
   // Or var ExpandableNavContainer = ExpandableNav.ExpandableNavContainer;
   var {ExpandableNavContainer, ExpandableNavbar, ExpandableNavHeader,
       ExpandableNavMenu, ExpandableNavMenuItem, ExpandableNavPage,
@@ -41,8 +41,8 @@ You have to also define the element that is going to be rendered when the navbar
           <ExpandableNavbar>
             <ExpandableNavHeader small={header.small} full={header.full} />
             <ExpandableNavMenu>
-              <ExpandableNavMenuItem small={menuItems.small[0]} full={menuItems.full[1]} />
-              <ExpandableNavMenuItem small={menuItems.small[1]} full={menuItems.full[2]} />
+              <ExpandableNavMenuItem small={menuItems.small[0]} full={menuItems.full[0]} />
+              <ExpandableNavMenuItem small={menuItems.small[1]} full={menuItems.full[1]} />
             </ExpandableNavMenu>
           </ExpandableNavbar>
           <ExpandableNavToggleButton />
