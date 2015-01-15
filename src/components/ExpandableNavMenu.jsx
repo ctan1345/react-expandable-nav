@@ -2,7 +2,8 @@
 
 var React = require('react/addons');
 
-var joinClasses = require('../utils/joinClasses');
+var joinClasses = require('../utils/joinClasses'),
+    assign = require('lodash.assign');
 
 var ExpandableNavMenu = React.createClass({
   propTypes: {
@@ -15,10 +16,10 @@ var ExpandableNavMenu = React.createClass({
     };
   },
   render() {
-    var ulStyle = {
+    var ulStyle = assign({
       float: 'none',
       margin: 0
-    };
+    }, this.props.style);
     var classes = "nav navbar-nav " +
       joinClasses(this.props.className, this.props.expanded ? this.props.fullClass : this.props.smallClass);
 

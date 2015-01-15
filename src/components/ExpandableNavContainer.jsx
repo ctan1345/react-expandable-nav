@@ -2,7 +2,7 @@
 
 var React = require('react/addons');
 
-var ExpandableNav = React.createClass({
+var ExpandableNavContainer = React.createClass({
   getInitialState() {
     return {
       expanded: this.props.expanded || false,
@@ -28,4 +28,4 @@ var ExpandableNav = React.createClass({
   },
 });
 
-module.exports = ExpandableNav;
+module.exports = ExpandableNavContainer;

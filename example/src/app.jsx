@@ -38,7 +38,7 @@ var App = React.createClass({
       paddingLeft: 50
     };
     return (
-      <ExpandableNavContainer expanded={false} >
+      <ExpandableNavContainer expanded={true} >
         <ExpandableNavbar fullClass="full" smallClass="small">
           <ExpandableNavHeader small={headerSmall} full={headerFull} headerStyle={headerStyle} fullStyle={fullStyle}/>
           <ExpandableNavMenu>

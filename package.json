@@ -1,6 +1,6 @@
 {
   "name": "react-expandable-nav",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "React component for twitch-like navbar layout",
   "main": "build/index.js",
   "directories": {
