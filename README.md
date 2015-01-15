@@ -3,13 +3,14 @@ react-expandable-nav
 This package is built upon Bootstrap.
 
 ## Demo
-[http://ctan1345.github.io/](http://ctan1345.github.io/)
+[http://ctan1345.github.io/react-expandable-nav/](http://ctan1345.github.io/react-expandable-nav/)
 
 ## Installation
 `npm install [--save] react-expandable-nav`
 
 ## Dependenecy
 Bootstrap: [http://getbootstrap.com/](http://getbootstrap.com/)
+
 jQuery (for tooltip function): [http://jquery.com/](http://jquery.com/)
 
 
