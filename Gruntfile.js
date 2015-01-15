@@ -20,7 +20,7 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: './specs/',
-            src: ['**/*.jsx'],
+            src: ['**/*.jsx', '**/*.js'],
             dest: './test-built/',
             ext: '.js'
           },

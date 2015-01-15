@@ -5,7 +5,9 @@ var React = require('react');
 var ExpandableNavPage = React.createClass({
   propTypes: {
     fullStyle: React.PropTypes.object,
-    smallStyle: React.PropTypes.object
+    smallStyle: React.PropTypes.object,
+    fullClass: React.PropTypes.string,
+    smallClass: React.PropTypes.string
   },
   getDefaultProps() {
     return {
@@ -25,8 +27,9 @@ var ExpandableNavPage = React.createClass({
   },
   render() {
     var style = this.props.expanded ? this.props.fullStyle : this.props.smallStyle;
+    var classes = this.props.expanded ? this.props.fullClass : this.props.smallClass;
     return (
-      <div style={style}>
+      <div style={style} className={classes}>
         {this.props.children}
       </div>
     );

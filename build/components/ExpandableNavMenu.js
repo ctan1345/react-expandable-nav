@@ -16,7 +16,8 @@ var ExpandableNavMenu = React.createClass({displayName: "ExpandableNavMenu",
   },
   render:function() {
     var ulStyle = {
-      float: 'none'
+      float: 'none',
+      margin: 0
     };
     var classes = "nav navbar-nav " +
       joinClasses(this.props.className, this.props.expanded ? this.props.fullClass : this.props.smallClass);

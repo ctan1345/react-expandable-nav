@@ -15,7 +15,7 @@ var ExpandableNavItem = React.createClass({
     return {
       smallStyle: {},
       fullStyle: {}
-    }
+    };
   },
   render() {
     var style = assign(this.props.expanded ? this.props.fullStyle : this.props.smallStyle, this.props.style);

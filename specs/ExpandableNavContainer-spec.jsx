@@ -6,16 +6,16 @@ var React = require('react/addons'),
 var chai = require('chai');
 var expect = chai.expect;
 
-var ExpandableNav = require('../build/components/ExpandableNav'),
+var ExpandableNavContainer = require('../build/components/ExpandableNavContainer'),
     ExpandableNavbar = require('../build/components/ExpandableNavbar');
 
-describe('ExpandableNav', function() {
+describe('ExpandableNavContainer', function() {
   var instance;
   before(function() {
     instance = ReactTestUtils.renderIntoDocument(
-      <ExpandableNav expanded={true}>
+      <ExpandableNavContainer expanded={true}>
         <ExpandableNavbar ref="navbar" />
-      </ExpandableNav>
+      </ExpandableNavContainer>
     );
   });
 

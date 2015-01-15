@@ -18,6 +18,14 @@ var ExpandableNavMenuItem = React.createClass({displayName: "ExpandableNavMenuIt
     url: React.PropTypes.string,
     tooltip: React.PropTypes.string
   },
+  componentDidUpdate:function() {
+    var $ = this.props.jquery;
+    if (this.props.expanded) {
+      $(this.refs.link.getDOMNode()).tooltip('disable');
+    } else {
+      $(this.refs.link.getDOMNode()).tooltip('enable');
+    }
+  },
   getDefaultProps:function() {
     var sharedStyle = {
       paddingTop: 13,
@@ -54,9 +62,12 @@ var ExpandableNavMenuItem = React.createClass({displayName: "ExpandableNavMenuIt
     var navItemStyle = {
       cursor: 'pointer'
     };
-    if (this.props.tooltip && !this.props.expanded) {
+    if (this.props.tooltip) {
+      if (!this.props.jquery) {
+        throw new Error('jQuery dependency must be passed to ExpandableNavMenuItem to enable tooltip function');
+      }
       link = (
-        React.createElement("a", {ref: "link", href: url, onClick: this.props.onSelect, style: aStyle, "data-toggle": "tooltip", "data-placement": "right", title: this.props.tooltip}, 
+        React.createElement("a", {ref: "link", href: url, onClick: this.props.onSelect, style: aStyle, "data-toggle": "menuitem-tooltip", "data-placement": "right", title: this.props.tooltip}, 
           React.createElement(ExpandableNavItem, React.__spread({style: navItemStyle, small: small, full: full, smallStyle: smallStyle, fullStyle: fullStyle},  props))
         )
       );

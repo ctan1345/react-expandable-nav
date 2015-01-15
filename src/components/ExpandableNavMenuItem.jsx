@@ -19,6 +19,7 @@ var ExpandableNavMenuItem = React.createClass({
     tooltip: React.PropTypes.string
   },
   componentDidUpdate() {
+    var $ = this.props.jquery;
     if (this.props.expanded) {
       $(this.refs.link.getDOMNode()).tooltip('disable');
     } else {
@@ -61,9 +62,12 @@ var ExpandableNavMenuItem = React.createClass({
     var navItemStyle = {
       cursor: 'pointer'
     };
-    if (this.props.tooltip && !this.props.expanded) {
+    if (this.props.tooltip) {
+      if (!this.props.jquery) {
+        throw new Error('jQuery dependency must be passed to ExpandableNavMenuItem to enable tooltip function');
+      }
       link = (
-        <a ref="link" href={url} onClick={this.props.onSelect} style={aStyle} data-toggle="tooltip" data-placement="right" title={this.props.tooltip}>
+        <a ref="link" href={url} onClick={this.props.onSelect} style={aStyle} data-toggle="menuitem-tooltip" data-placement="right" title={this.props.tooltip}>
           <ExpandableNavItem style={navItemStyle} small={small} full={full} smallStyle={smallStyle} fullStyle={fullStyle} {...props} />
         </a>
       );

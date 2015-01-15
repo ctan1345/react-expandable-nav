@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  ExpandableNav: require('./components/ExpandableNav'),
+  ExpandableNavContainer: require('./components/ExpandableNavContainer'),
   ExpandableNavbar: require('./components/ExpandableNavbar'),
   ExpandableNavHeader: require('./components/ExpandableNavHeader'),
   ExpandableNavItem: require('./components/ExpandableNavItem'),

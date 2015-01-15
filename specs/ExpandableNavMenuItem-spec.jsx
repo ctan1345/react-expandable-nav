@@ -8,17 +8,15 @@ var expect = chai.expect;
 
 var ExpandableNavMenuItem = require('../build/components/ExpandableNavMenuItem');
 
+var mocks = require('./helpers/mocks');
+
 describe('ExpandableNavMenuItem', function() {
+  var jquery = mocks.jquery;
+
   it('adds bootstrap tooltip attributes when tooltip is defined and expanded is false', function() {
     var instance = ReactTestUtils.renderIntoDocument(
-      <ExpandableNavMenuItem tooltip={"test"} expanded={false} />
+      <ExpandableNavMenuItem tooltip={"test"} expanded={false} jquery={jquery} />
     );
     expect(instance.refs.link.props['data-toggle']).to.exist;
-  });
-  it('does not add bootstrap tooltip attributes when tooltip is defined and expanded is true', function() {
-    var instance = ReactTestUtils.renderIntoDocument(
-      <ExpandableNavMenuItem tooltip={"test"} expanded={true} />
-    );
-    expect(instance.refs.link.props['data-toggle']).not.to.exist;
   });
 });

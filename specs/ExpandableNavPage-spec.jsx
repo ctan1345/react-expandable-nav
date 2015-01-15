@@ -16,10 +16,24 @@ describe('ExpandableNavPage', function() {
     expect(ReactTestUtils.findRenderedDOMComponentWithTag(instance, 'div').props.style).to.deep.equal({full: 'full'});
   });
 
-  it('applies smallStyl when expanded is false', function() {
+  it('applies smallStyle when expanded is false', function() {
     var instance = ReactTestUtils.renderIntoDocument(
       <ExpandableNavPage smallStyle={{small: 'small'}} expanded={false} />
     );
     expect(ReactTestUtils.findRenderedDOMComponentWithTag(instance, 'div').props.style).to.deep.equal({small: 'small'});
+  });
+
+  it('applies fullClass when expanded is true', function() {
+    var instance = ReactTestUtils.renderIntoDocument(
+      <ExpandableNavPage fullClass={'full'} expanded={true} />
+    );
+    expect(ReactTestUtils.findRenderedDOMComponentWithTag(instance, 'div').props.className).to.equal('full');
+  });
+
+  it('applies smallClass when expanded is false', function() {
+    var instance = ReactTestUtils.renderIntoDocument(
+      <ExpandableNavPage smallClass={'small'} expanded={false} />
+    );
+    expect(ReactTestUtils.findRenderedDOMComponentWithTag(instance, 'div').props.className).to.equal('small');
   });
 });

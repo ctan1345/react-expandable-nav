@@ -9,6 +9,8 @@ var expect = chai.expect;
 var ExpandableNavMenu = require('../build/components/ExpandableNavMenu'),
     ExpandableNavMenuItem = require('../build/components/ExpandableNavMenuItem');
 
+var mocks = require('./helpers/mocks');
+
 describe('ExpandableNavMenu', function() {
   var instance;
 
@@ -16,10 +18,12 @@ describe('ExpandableNavMenu', function() {
       fullStyle = {full: 'full'};
 
   before(function() {
+    var jquery = mocks.jquery;
+
     instance = ReactTestUtils.renderIntoDocument(
       <ExpandableNavMenu>
-        <ExpandableNavMenuItem ref="a" />
-        <ExpandableNavMenuItem ref="b" />
+        <ExpandableNavMenuItem ref="a" jquery={jquery} />
+        <ExpandableNavMenuItem ref="b" jquery={jquery} />
       </ExpandableNavMenu>
 
     );
