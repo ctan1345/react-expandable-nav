@@ -36,4 +36,11 @@ describe('ExpandableNavbar', function() {
     );
     expect(ReactTestUtils.findRenderedDOMComponentWithClass(instance, 'navbar').props.className.split(' ')).to.contain('small');
   });
+
+  it('applies styles to navbar', function() {
+    var instance = ReactTestUtils.renderIntoDocument(
+      <ExpandableNavbar style={{paddingTop: 10}} />
+    );
+    expect(ReactTestUtils.findRenderedDOMComponentWithClass(instance, 'navbar').props.style).to.contain({paddingTop: 10});
+  })
 });

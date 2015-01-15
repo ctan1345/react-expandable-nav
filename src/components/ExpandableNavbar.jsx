@@ -2,7 +2,8 @@
 
 var React = require('react/addons');
 
-var joinClasses = require('../utils/joinClasses');
+var joinClasses = require('../utils/joinClasses'),
+    assign = require('lodash.assign');
 
 var ExpandableNavbar = React.createClass({
   propTypes: {
@@ -18,7 +19,7 @@ var ExpandableNavbar = React.createClass({
     };
   },
   render() {
-    var navbarStyle = {
+    var navbarStyle = assign({
       position: 'fixed',
       top: 0,
       left: 0,
@@ -26,7 +27,7 @@ var ExpandableNavbar = React.createClass({
       borderRadius: 0,
       border: 0,
       width: this.props.expanded ? this.props.fullWidth : this.props.smallWidth
-    };
+    }, this.props.style);
     var navbarContainerStyle = {
       padding: 0,
       width: 100 + '%'
