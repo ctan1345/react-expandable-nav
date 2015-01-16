@@ -19,6 +19,9 @@ var ExpandableNavMenuItem = React.createClass({displayName: "ExpandableNavMenuIt
     tooltip: React.PropTypes.string
   },
   componentDidUpdate:function() {
+    if (!this.props.tooltip) {
+      return;
+    }
     var $ = this.props.jquery;
     if (this.props.expanded) {
       $(this.refs.link.getDOMNode()).tooltip('disable');
