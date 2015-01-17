@@ -1,5 +1,7 @@
 react-expandable-nav
 ====================
+React component for twitch-like navbar layout.
+
 This package is built upon Bootstrap.
 
 ## Demo
