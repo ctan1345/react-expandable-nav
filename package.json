@@ -1,6 +1,6 @@
 {
   "name": "react-expandable-nav",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "React component for twitch-like navbar layout",
   "main": "build/index.js",
   "directories": {
@@ -50,7 +50,8 @@
     "react",
     "twitch",
     "navbar",
-    "expandable"
+    "expandable",
+    "react-component"
   ],
   "author": "Vasco Remedios Menezes <ctan1345@uni.sydney.edu.au>",
   "license": "MIT",

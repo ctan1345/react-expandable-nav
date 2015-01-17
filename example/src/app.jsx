@@ -42,8 +42,8 @@ var App = React.createClass({
         <ExpandableNavbar fullClass="full" smallClass="small">
           <ExpandableNavHeader small={headerSmall} full={headerFull} headerStyle={headerStyle} fullStyle={fullStyle}/>
           <ExpandableNavMenu>
-            <ExpandableNavMenuItem small={menuItemsSmall[0]} full={menuItemsFull[0]} tooltip={"Home"} jquery={window.$} />
-            <ExpandableNavMenuItem small={menuItemsSmall[1]} full={menuItemsFull[1]} tooltip={"About us"} jquery={window.$}/>
+            <ExpandableNavMenuItem small={menuItemsSmall[0]} full={menuItemsFull[0]} tooltip={"Home"} jquery={window.$}/>
+            <ExpandableNavMenuItem small={menuItemsSmall[1]} full={menuItemsFull[1]} tooltip={"About us"} jquery={window.$} />
             <ExpandableNavMenuItem small={menuItemsSmall[2]} full={menuItemsFull[2]} tooltip={"Contact us"} jquery={window.$}/>
           </ExpandableNavMenu>
         </ExpandableNavbar>

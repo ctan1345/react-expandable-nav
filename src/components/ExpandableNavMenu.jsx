@@ -8,12 +8,28 @@ var joinClasses = require('../utils/joinClasses'),
 var ExpandableNavMenu = React.createClass({
   propTypes: {
     fullClass: React.PropTypes.string,
-    smallClass: React.PropTypes.string,
+    smallClass: React.PropTypes.string
   },
   getInitialState() {
+    if (!this.props.children) {
+      return {
+        active: 0
+      };
+    }
+
+    for (var i = 0; i < this.props.children.length; i++) {
+      var child = this.props.children[i];
+      if (child.props.active) {
+        return {
+          active: i
+        };
+      }
+    }
+
     return {
       active: 0
     };
+
   },
   render() {
     var ulStyle = assign({

@@ -21,6 +21,7 @@ You have to also define the element that is going to be rendered when the navbar
 
 ```javascript
   var ExpandableNav = require('react-expandable-nav');
+
   // Or var ExpandableNavContainer = ExpandableNav.ExpandableNavContainer;
   var {ExpandableNavContainer, ExpandableNavbar, ExpandableNavHeader,
       ExpandableNavMenu, ExpandableNavMenuItem, ExpandableNavPage,
@@ -41,8 +42,8 @@ You have to also define the element that is going to be rendered when the navbar
           <ExpandableNavbar>
             <ExpandableNavHeader small={header.small} full={header.full} />
             <ExpandableNavMenu>
-              <ExpandableNavMenuItem small={menuItems.small[0]} full={menuItems.full[0]} />
-              <ExpandableNavMenuItem small={menuItems.small[1]} full={menuItems.full[1]} />
+              <ExpandableNavMenuItem small={menuItems.small[0]} full={menuItems.full[0]} url='/home/' />
+              <ExpandableNavMenuItem small={menuItems.small[1]} full={menuItems.full[1]} url='/about/' />
             </ExpandableNavMenu>
           </ExpandableNavbar>
           <ExpandableNavToggleButton />
@@ -92,7 +93,7 @@ To do that, you can provide inline style.
   </ExpandableNavContainer>
 ```
 
-Alternatively, you can specify the class.
+Alternatively, you can specify the class and use CSS to set the style.
 ```javascript
   <ExpandableNavContainer>
     <ExpandableNavbar fullClass={"full"} smallClass={"small"}>
@@ -102,6 +103,40 @@ Alternatively, you can specify the class.
       ...
     </ExpandableNavPage>
   </ExpandableNavContainer>
+```
+
+You can control the initial active URL by providing active={true} attribute on `<ExpandableNavMenuItem>`.
+```javascript
+  <ExpandableNavMenu>
+    <ExpandableNavMenuItem small={menuItems.small[0]} full={menuItems.full[0]} url='/home/' />
+    <ExpandableNavMenuItem small={menuItems.small[1]} full={menuItems.full[1]} url='/about/' active={false} />
+
+    // This element will have 'active' class when ExpandableNav is first rendered
+    <ExpandableNavMenuItem small={menuItems.small[2]} full={menuItems.full[2]} url='/contact/' active={true} />
+  </ExpandableNavMenu>
+```
+
+
+### Tooltip
+To use this function, you need to include jQuery and Bootstrap in your application.
+Firstly you have to trigger the tooltip by calling `$('[data-toggle="menuitem-tooltip"]').tooltip()`.
+Then you have to provide jQuery dependency to `ExpandableNavMenuItem` by passing `jquery={$}`.
+Assume jQuery is available globally, you can something like this:
+```javascript
+var App = React.createClass({
+  componentDidMount() {
+    $('[data-toggle="menuitem-tooltip"]').tooltip();
+  },
+  render() {
+    <ExpandableNavContainer>
+      ...
+      <ExpandableNavMenu>
+        <ExpandableNavMenuItem small={menuItemsSmall[0]} full={menuItemsFull[0]} tooltip={"Home"} jquery={window.$} />
+        ...
+      </ExpandableNavMenu>
+    </ExpandableNavContainer>
+  }
+});
 ```
 
 

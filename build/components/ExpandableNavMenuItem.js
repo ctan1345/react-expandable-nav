@@ -16,7 +16,8 @@ var ExpandableNavMenuItem = React.createClass({displayName: "ExpandableNavMenuIt
     smallStyle: React.PropTypes.object,
     fullStyle: React.PropTypes.object,
     url: React.PropTypes.string,
-    tooltip: React.PropTypes.string
+    tooltip: React.PropTypes.string,
+    active: React.PropTypes.bool
   },
   componentDidUpdate:function() {
     if (!this.props.tooltip) {
