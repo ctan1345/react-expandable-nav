@@ -13,7 +13,7 @@ var ExpandableNavContainer = React.createClass({displayName: "ExpandableNavConta
   },
   render:function() {
     return (
-      React.createElement("div", null, 
+      React.createElement("div", React.__spread({},  this.props), 
         React.Children.map(this.props.children, this.renderChild)
       )
     );

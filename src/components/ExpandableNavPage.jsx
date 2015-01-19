@@ -1,6 +1,7 @@
 'use strict';
 
-var React = require('react');
+var React = require('react'),
+    assign = require('lodash.assign');
 
 var ExpandableNavPage = React.createClass({
   propTypes: {
@@ -26,7 +27,8 @@ var ExpandableNavPage = React.createClass({
     };
   },
   render() {
-    var style = this.props.expanded ? this.props.fullStyle : this.props.smallStyle;
+    var style = assign(this.props.expanded ? this.props.fullStyle : this.props.smallStyle,
+                      this.props.style);
     var classes = this.props.expanded ? this.props.fullClass : this.props.smallClass;
     return (
       <div style={style} className={classes}>
