@@ -36,15 +36,15 @@ var ExpandableNavToggleButton = React.createClass({displayName: "ExpandableNavTo
       position: 'fixed',
     };
 
-    style = assign(this.props.style || {}, sharedStyle);
+    style = assign(sharedStyle, this.props.style || {});
 
     if (this.props.expanded) {
       toggleButton = this.props.full;
-      style = assign(this.props.fullStyle, style);
+      style = assign(style, this.props.fullStyle);
       classes = this.props.fullClass;
     } else {
       toggleButton = this.props.small;
-      style = assign(this.props.smallStyle, style);
+      style = assign(style, this.props.smallStyle);
       classes = this.props.smallClass;
     }
 
