@@ -28,10 +28,13 @@ var ExpandableNavbar = React.createClass({displayName: "ExpandableNavbar",
       border: 0,
       width: this.props.expanded ? this.props.fullWidth : this.props.smallWidth
     }, this.props.style);
+
     var navbarContainerStyle = {
       padding: 0,
-      width: 100 + '%'
+      width: 100 + '%',
+      height: 100 + '%'
     };
+
     var classes = "navbar navbar-inverse " +
       joinClasses(this.props.className, this.props.expanded ? this.props.fullClass : this.props.smallClass);
     return (
