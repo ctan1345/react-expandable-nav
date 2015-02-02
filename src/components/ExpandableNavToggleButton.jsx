@@ -36,17 +36,17 @@ var ExpandableNavToggleButton = React.createClass({
       position: 'fixed',
     };
 
+    style = assign(this.props.style || {}, sharedStyle)
+
     if (this.props.expanded) {
       toggleButton = this.props.full;
-      style = assign(this.props.fullStyle, sharedStyle);
+      style = assign(this.props.fullStyle, style);
       classes = this.props.fullClass;
     } else {
       toggleButton = this.props.small;
-      style = assign(this.props.smallStyle, sharedStyle);
+      style = assign(this.props.smallStyle, style);
       classes = this.props.smallClass;
     }
-
-    style = assign(style, this.props.style || {});
 
     return React.addons.cloneWithProps(toggleButton, {
       ref: toggleButton.ref,
