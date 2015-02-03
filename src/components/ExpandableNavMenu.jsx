@@ -9,8 +9,8 @@ var ExpandableNavMenu = React.createClass({
   propTypes: {
     fullClass: React.PropTypes.string,
     smallClass: React.PropTypes.string,
-    fullStyle: React.PropTypes.string,
-    smallStyle: React.PropTypes.string
+    fullStyle: React.PropTypes.object,
+    smallStyle: React.PropTypes.object
   },
   getInitialState() {
     if (!this.props.children) {
