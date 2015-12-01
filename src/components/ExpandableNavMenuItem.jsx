@@ -17,7 +17,8 @@ var ExpandableNavMenuItem = React.createClass({
     fullStyle: React.PropTypes.object,
     url: React.PropTypes.string,
     tooltip: React.PropTypes.string,
-    active: React.PropTypes.bool
+    active: React.PropTypes.bool,
+    onClick: React.PropTypes.func
   },
   componentDidUpdate() {
     if (!this.props.tooltip) {
@@ -41,6 +42,12 @@ var ExpandableNavMenuItem = React.createClass({
       smallStyle: sharedStyle,
       fullStyle: sharedStyle
     };
+  },
+  handleClick(e) {
+    if (this.props.onClick) {
+      this.props.onClick(e);
+    }
+    this.props.onSelect();
   },
   render() {
     var {active, url, small, full, ...props} = this.props;
@@ -71,13 +78,13 @@ var ExpandableNavMenuItem = React.createClass({
         throw new Error('jQuery dependency must be passed to ExpandableNavMenuItem to enable tooltip function');
       }
       link = (
-        <a ref="link" href={url} onClick={this.props.onSelect} style={aStyle} data-toggle="menuitem-tooltip" data-placement="right" title={this.props.tooltip}>
+        <a ref="link" href={url} onClick={this.handleClick} style={aStyle} data-toggle="menuitem-tooltip" data-placement="right" title={this.props.tooltip}>
           <ExpandableNavItem style={navItemStyle} small={small} full={full} smallStyle={smallStyle} fullStyle={fullStyle} {...props} />
         </a>
       );
     } else {
       link = (
-        <a ref="link" href={url} onClick={this.props.onSelect} style={aStyle}>
+        <a ref="link" href={url} onClick={this.handleClick} style={aStyle}>
           <ExpandableNavItem style={navItemStyle} small={small} full={full} smallStyle={smallStyle} fullStyle={fullStyle} {...props} />
         </a>
       );

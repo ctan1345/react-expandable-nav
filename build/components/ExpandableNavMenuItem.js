@@ -17,7 +17,8 @@ var ExpandableNavMenuItem = React.createClass({displayName: "ExpandableNavMenuIt
     fullStyle: React.PropTypes.object,
     url: React.PropTypes.string,
     tooltip: React.PropTypes.string,
-    active: React.PropTypes.bool
+    active: React.PropTypes.bool,
+    onClick: React.PropTypes.func
   },
   componentDidUpdate:function() {
     if (!this.props.tooltip) {
@@ -41,6 +42,12 @@ var ExpandableNavMenuItem = React.createClass({displayName: "ExpandableNavMenuIt
       smallStyle: sharedStyle,
       fullStyle: sharedStyle
     };
+  },
+  handleClick:function(e) {
+    if (this.props.onClick) {
+      this.props.onClick(e);
+    }
+    this.props.onSelect();
   },
   render:function() {
     var $__0=      this.props,active=$__0.active,url=$__0.url,small=$__0.small,full=$__0.full,props=(function(source, exclusion) {var rest = {};var hasOwn = Object.prototype.hasOwnProperty;if (source == null) {throw new TypeError();}for (var key in source) {if (hasOwn.call(source, key) && !hasOwn.call(exclusion, key)) {rest[key] = source[key];}}return rest;})($__0,{active:1,url:1,small:1,full:1});
@@ -71,13 +78,13 @@ var ExpandableNavMenuItem = React.createClass({displayName: "ExpandableNavMenuIt
         throw new Error('jQuery dependency must be passed to ExpandableNavMenuItem to enable tooltip function');
       }
       link = (
-        React.createElement("a", {ref: "link", href: url, onClick: this.props.onSelect, style: aStyle, "data-toggle": "menuitem-tooltip", "data-placement": "right", title: this.props.tooltip}, 
+        React.createElement("a", {ref: "link", href: url, onClick: this.handleClick, style: aStyle, "data-toggle": "menuitem-tooltip", "data-placement": "right", title: this.props.tooltip},
           React.createElement(ExpandableNavItem, React.__spread({style: navItemStyle, small: small, full: full, smallStyle: smallStyle, fullStyle: fullStyle},  props))
         )
       );
     } else {
       link = (
-        React.createElement("a", {ref: "link", href: url, onClick: this.props.onSelect, style: aStyle}, 
+        React.createElement("a", {ref: "link", href: url, onClick: this.handleClick, style: aStyle},
           React.createElement(ExpandableNavItem, React.__spread({style: navItemStyle, small: small, full: full, smallStyle: smallStyle, fullStyle: fullStyle},  props))
         )
       );
