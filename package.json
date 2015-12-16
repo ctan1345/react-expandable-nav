@@ -7,8 +7,7 @@
     "example": "example"
   },
   "dependencies": {
-    "lodash.assign": "^2.4.1",
-    "lodash.zip": "^2.4.1"
+    "object-assign": "^4.0.1"
   },
   "devDependencies": {
     "mocha": "^2.1.0",

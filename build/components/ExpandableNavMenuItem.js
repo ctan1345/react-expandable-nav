@@ -2,7 +2,7 @@
 
 var React = require('react');
 
-var assign = require('lodash.assign'),
+var assign = require('object-assign'),
     joinClasses = require('../utils/joinClasses');
 
 var ExpandableNavItem = require('./ExpandableNavItem');
@@ -78,13 +78,13 @@ var ExpandableNavMenuItem = React.createClass({displayName: "ExpandableNavMenuIt
         throw new Error('jQuery dependency must be passed to ExpandableNavMenuItem to enable tooltip function');
       }
       link = (
-        React.createElement("a", {ref: "link", href: url, onClick: this.handleClick, style: aStyle, "data-toggle": "menuitem-tooltip", "data-placement": "right", title: this.props.tooltip},
+        React.createElement("a", {ref: "link", href: url, onClick: this.handleClick, style: aStyle, "data-toggle": "menuitem-tooltip", "data-placement": "right", title: this.props.tooltip}, 
           React.createElement(ExpandableNavItem, React.__spread({style: navItemStyle, small: small, full: full, smallStyle: smallStyle, fullStyle: fullStyle},  props))
         )
       );
     } else {
       link = (
-        React.createElement("a", {ref: "link", href: url, onClick: this.handleClick, style: aStyle},
+        React.createElement("a", {ref: "link", href: url, onClick: this.handleClick, style: aStyle}, 
           React.createElement(ExpandableNavItem, React.__spread({style: navItemStyle, small: small, full: full, smallStyle: smallStyle, fullStyle: fullStyle},  props))
         )
       );
