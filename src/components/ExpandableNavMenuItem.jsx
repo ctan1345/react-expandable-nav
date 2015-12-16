@@ -58,11 +58,11 @@ var ExpandableNavMenuItem = React.createClass({
     var aStyle = {
       padding: 0
     };
-    var smallStyle = assign({}, this.props.smallStyle, {
+    var smallStyle = assign(this.props.smallStyle || {}, {
       display: 'block',
       fontSize: 20,
     });
-    var fullStyle = assign({}, this.props.fullStyle, {
+    var fullStyle = assign(this.props.fullStyle || {}, {
       display: 'block',
       fontSize: 20,
     });
