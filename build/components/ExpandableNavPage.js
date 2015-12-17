@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react'),
-    assign = require('lodash.assign');
+    assign = require('object-assign');
 
 var ExpandableNavPage = React.createClass({displayName: "ExpandableNavPage",
   propTypes: {
