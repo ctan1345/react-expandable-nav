@@ -10,7 +10,7 @@ This package is built upon Bootstrap.
 ## Installation
 `npm install [--save] react-expandable-nav`
 
-## Dependenecy
+## Dependency
 Bootstrap: [http://getbootstrap.com/](http://getbootstrap.com/)
 
 jQuery (for tooltip function): [http://jquery.com/](http://jquery.com/)
