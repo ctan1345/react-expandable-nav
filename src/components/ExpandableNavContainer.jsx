@@ -1,6 +1,5 @@
-'use strict';
-
-var React = require('react/addons');
+var React = require('react');
+var assign = require('object-assign');
 
 var ExpandableNavContainer = React.createClass({
   getInitialState() {
@@ -8,24 +7,26 @@ var ExpandableNavContainer = React.createClass({
       expanded: this.props.expanded || false,
     };
   },
-  handleToggle() {
+  handleToggle(){
     this.setState({expanded: !this.state.expanded});
   },
   render() {
     return (
-      <div {...this.props}>
-        {React.Children.map(this.props.children, this.renderChild)}
+      <div>
+        {
+            React.Children.map(this.props.children, (child, i) =>{
+                var childProps = {
+                  key: child.key ? child.key : i,
+                  expanded: this.state.expanded,
+                  handleToggle: this.handleToggle
+                }
+                
+                return React.cloneElement(child, { ...childProps });
+            })
+        }
       </div>
     );
-  },
-  renderChild(child, i) {
-    return React.addons.cloneWithProps(child, {
-      key: child.key ? child.key : i,
-      expanded: this.state.expanded,
-      handleToggle: this.handleToggle,
-      ref: child.ref
-    });
-  },
+  }
 });
 
 module.exports = ExpandableNavContainer;

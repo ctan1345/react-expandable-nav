@@ -1,6 +1,6 @@
 'use strict';
 
-var React = require('react/addons');
+var React = require('react');
 
 var ExpandableNav = React.createClass({displayName: "ExpandableNav",
   getInitialState:function() {
@@ -13,13 +13,13 @@ var ExpandableNav = React.createClass({displayName: "ExpandableNav",
   },
   render:function() {
     return (
-      React.createElement("div", null, 
+      React.createElement("div", null,
         React.Children.map(this.props.children, this.renderChild)
       )
     );
   },
   renderChild:function(child, i) {
-    return React.addons.cloneWithProps(child, {
+    return React.cloneElement(child, {
       key: child.key ? child.key : i,
       expanded: this.state.expanded,
       handleToggle: this.handleToggle,

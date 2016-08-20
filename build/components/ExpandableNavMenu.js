@@ -1,6 +1,4 @@
-'use strict';
-
-var React = require('react/addons');
+var React = require('react');
 
 var joinClasses = require('../utils/joinClasses'),
     assign = require('object-assign');
@@ -46,21 +44,22 @@ var ExpandableNavMenu = React.createClass({displayName: "ExpandableNavMenu",
 
     return (
       React.createElement("ul", {className: classes, style: ulStyle}, 
-        React.Children.map(this.props.children, this.renderMenuItems)
+        
+            React.Children.map(this.props.children, function(child, index) {
+                return React.cloneElement(child, {
+                    expanded: this.props.expanded,
+                    active: this.state.active === index,
+                    key: child.key ? child.key : index,
+                    ref: child.ref,
+                    onSelect: this.handleSelect.bind(null, index)
+                });
+            }.bind(this))
+        
       )
     );
   },
   handleSelect:function(i) {
     this.setState({active: i});
-  },
-  renderMenuItems:function(child, i) {
-    return React.addons.cloneWithProps(child, {
-      expanded: this.props.expanded,
-      active: this.state.active === i,
-      key: child.key ? child.key : i,
-      ref: child.ref,
-      onSelect: this.handleSelect.bind(null, i)
-    });
   }
 });
 

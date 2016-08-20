@@ -1,5 +1,3 @@
-'use strict';
-
 var React = require('react');
 
 var assign = require('object-assign'),

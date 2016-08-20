@@ -1,5 +1,3 @@
-'use strict';
-
 var React = require('react');
 
 var assign = require('object-assign'),
@@ -73,26 +71,37 @@ var ExpandableNavMenuItem = React.createClass({displayName: "ExpandableNavMenuIt
     var navItemStyle = {
       cursor: 'pointer'
     };
+
+    var extraProps = {}
     if (this.props.tooltip) {
       if (!this.props.jquery) {
         throw new Error('jQuery dependency must be passed to ExpandableNavMenuItem to enable tooltip function');
       }
-      link = (
-        React.createElement("a", {ref: "link", href: url, onClick: this.handleClick, style: aStyle, "data-toggle": "menuitem-tooltip", "data-placement": "right", title: this.props.tooltip}, 
-          React.createElement(ExpandableNavItem, React.__spread({style: navItemStyle, small: small, full: full, smallStyle: smallStyle, fullStyle: fullStyle},  props))
-        )
-      );
-    } else {
-      link = (
-        React.createElement("a", {ref: "link", href: url, onClick: this.handleClick, style: aStyle}, 
-          React.createElement(ExpandableNavItem, React.__spread({style: navItemStyle, small: small, full: full, smallStyle: smallStyle, fullStyle: fullStyle},  props))
-        )
-      );
+
+     extraProps = {
+        'data-toggle': 'menuitem-tooltip',
+        'data-placement': 'right',
+        title: this.props.toolTip
+     }
     }
+
+    var navItem = React.createElement(ExpandableNavItem, assign({}, {
+        style: navItemStyle,
+        small: small,
+        full: full,
+        smallStyle: smallStyle,
+        fullStyle: fullStyle
+    }, props))
+
+    var linkItem = React.createElement('a', assign({}, {
+        ref: "link",
+        onClick: this.handleClick,
+        style: aStyle
+    }, extraProps), navItem)
 
     return (
       React.createElement("li", {className: classes, style: liStyle}, 
-        link
+        linkItem 
       )
     );
   }

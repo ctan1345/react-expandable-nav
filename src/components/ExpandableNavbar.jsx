@@ -1,12 +1,11 @@
-'use strict';
-
-var React = require('react/addons');
+var React = require('react');
 
 var joinClasses = require('../utils/joinClasses'),
     assign = require('object-assign');
 
 var ExpandableNavbar = React.createClass({
   propTypes: {
+    expanded: React.PropTypes.bool,
     fullWidth: React.PropTypes.number,
     smallWidth: React.PropTypes.number,
     fullClass: React.PropTypes.string,
@@ -41,17 +40,18 @@ var ExpandableNavbar = React.createClass({
     return (
       <div className={classes} style={navbarStyle} role="navigation">
         <div style={navbarContainerStyle}>
-          {React.Children.map(this.props.children, this.renderChild)}
+            {
+                React.Children.map(this.props.children, (child, index) =>{
+                    return React.cloneElement(child, {
+                        key: index,
+                        expanded: this.props.expanded
+                    });
+                })
+            }
         </div>
       </div>
     );
-  },
-  renderChild(child, i) {
-    return React.addons.cloneWithProps(child, {
-      key: i,
-      expanded: this.props.expanded
-    });
-  },
+  }
 });
 
 module.exports = ExpandableNavbar;
