@@ -23,7 +23,7 @@ var ExpandableNavMenu = React.createClass({displayName: "ExpandableNavMenu",
         return this.state.active
     }
 
-    return null
+    return undefined
   },
   render:function() {
     var ulStyle = assign({
@@ -46,7 +46,7 @@ var ExpandableNavMenu = React.createClass({displayName: "ExpandableNavMenu",
             React.Children.map(this.props.children, function(child, index) {
                 return React.cloneElement(child, {
                     expanded: this.props.expanded,
-                    active: activeIdx === index,
+                    active: activeIdx ? activeIdx === index : undefined,
                     key: child.key ? child.key : index,
                     ref: child.ref,
                     onSelect: this.handleSelect.bind(null, index)
