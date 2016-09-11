@@ -23,10 +23,7 @@ var ExpandableNavMenu = React.createClass({
         return this.state.active
     }
 
-    const active = 0;
-    this.setState({ active: active })
-
-    return active
+    return null
   },
   render() {
     var ulStyle = assign({
@@ -39,7 +36,10 @@ var ExpandableNavMenu = React.createClass({
     var classes = "nav navbar-nav " +
       joinClasses(this.props.className, this.props.expanded ? this.props.fullClass : this.props.smallClass);
 
-    const activeIdx = this.calculateActiveIdx()
+    let activeIdx = this.calculateActiveIdx()
+    if(this.props.defaultActive && activeIdx === null){
+        activeIdx = this.props.defaultActive
+    }
     return (
       <ul className={classes} style={ulStyle}>
         {
