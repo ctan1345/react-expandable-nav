@@ -18,6 +18,7 @@ var ExpandableNavMenu = React.createClass({
         }
     }
 
+    // Check against the state variable
     if(this.state && this.state.hasOwnProperty('active')){
         return this.state.active
     }
