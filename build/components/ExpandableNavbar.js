@@ -5,6 +5,7 @@ var joinClasses = require('../utils/joinClasses'),
 
 var ExpandableNavbar = React.createClass({displayName: "ExpandableNavbar",
   propTypes: {
+    expanded: React.PropTypes.bool,
     fullWidth: React.PropTypes.number,
     smallWidth: React.PropTypes.number,
     fullClass: React.PropTypes.string,

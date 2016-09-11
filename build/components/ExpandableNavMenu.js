@@ -10,26 +10,22 @@ var ExpandableNavMenu = React.createClass({displayName: "ExpandableNavMenu",
     fullStyle: React.PropTypes.object,
     smallStyle: React.PropTypes.object
   },
-  getInitialState:function() {
-    if (!this.props.children) {
-      return {
-        active: 0
-      };
+  calculateActiveIdx:function() {
+
+    for(let i = 0; i < this.props.children.length; i++){
+        if(this.props.children[i].props.active){
+          return i
+        }
     }
 
-    for (var i = 0; i < this.props.children.length; i++) {
-      var child = this.props.children[i];
-      if (child.props.active) {
-        return {
-          active: i
-        };
-      }
+    if(this.state.hasOwnProperty('active')){
+        return this.state.active
     }
 
-    return {
-      active: 0
-    };
+    const active = 0;
+    this.setState({active:active})
 
+    return active
   },
   render:function() {
     var ulStyle = assign({
@@ -42,13 +38,14 @@ var ExpandableNavMenu = React.createClass({displayName: "ExpandableNavMenu",
     var classes = "nav navbar-nav " +
       joinClasses(this.props.className, this.props.expanded ? this.props.fullClass : this.props.smallClass);
 
+    const activeIdx = calculateActiveIdx()
     return (
       React.createElement("ul", {className: classes, style: ulStyle}, 
         
             React.Children.map(this.props.children, function(child, index) {
                 return React.cloneElement(child, {
                     expanded: this.props.expanded,
-                    active: this.state.active === index,
+                    active: activeIdx === index,
                     key: child.key ? child.key : index,
                     ref: child.ref,
                     onSelect: this.handleSelect.bind(null, index)

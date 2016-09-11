@@ -11,7 +11,8 @@ var ExpandableNavMenu = React.createClass({
     smallStyle: React.PropTypes.object
   },
   calculateActiveIdx() {
-    for(let i = 0; i < this.props.children.length){
+
+    for(let i = 0; i < this.props.children.length; i++){
         if(this.props.children[i].props.active){
           return i
         }

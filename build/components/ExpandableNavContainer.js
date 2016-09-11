@@ -7,20 +7,21 @@ var ExpandableNavContainer = React.createClass({displayName: "ExpandableNavConta
       expanded: this.props.expanded || false,
     };
   },
-  handleToggle:function() {
+  handleToggle:function(){
     this.setState({expanded: !this.state.expanded});
   },
   render:function() {
     return (
-      React.createElement("div", {ref: "someref"}, 
+      React.createElement("div", null, 
         
             React.Children.map(this.props.children, function(child, i) {
-                var props = assign({},{
+                var childProps = {
                   key: child.key ? child.key : i,
                   expanded: this.state.expanded,
                   handleToggle: this.handleToggle
-                }, this.props)
-                return React.cloneElement(child, props);
+                }
+                
+                return React.cloneElement(child, Object.assign({}, childProps ));
             }.bind(this))
         
       )
