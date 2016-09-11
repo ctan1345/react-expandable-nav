@@ -38,7 +38,7 @@ var ExpandableNavMenu = React.createClass({
     var classes = "nav navbar-nav " +
       joinClasses(this.props.className, this.props.expanded ? this.props.fullClass : this.props.smallClass);
 
-    const activeIdx = calculateActiveIdx()
+    const activeIdx = this.calculateActiveIdx()
     return (
       <ul className={classes} style={ulStyle}>
         {
