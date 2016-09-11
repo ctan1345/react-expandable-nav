@@ -18,12 +18,12 @@ var ExpandableNavMenu = React.createClass({displayName: "ExpandableNavMenu",
         }
     }
 
-    if(this.state.hasOwnProperty('active')){
+    if(this.state && this.state.hasOwnProperty('active')){
         return this.state.active
     }
 
     const active = 0;
-    this.setState({active:active})
+    this.setState({ active: active })
 
     return active
   },
