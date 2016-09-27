@@ -1,6 +1,4 @@
-'use strict';
-
-var React = require('react/addons');
+var React = require('react');
 
 var joinClasses = require('../utils/joinClasses'),
     assign = require('object-assign');
@@ -12,26 +10,20 @@ var ExpandableNavMenu = React.createClass({
     fullStyle: React.PropTypes.object,
     smallStyle: React.PropTypes.object
   },
-  getInitialState() {
-    if (!this.props.children) {
-      return {
-        active: 0
-      };
+  calculateActiveIdx() {
+
+    for(let i = 0; i < this.props.children.length; i++){
+        if(this.props.children[i].props.active){
+          return i
+        }
     }
 
-    for (var i = 0; i < this.props.children.length; i++) {
-      var child = this.props.children[i];
-      if (child.props.active) {
-        return {
-          active: i
-        };
-      }
+    // Check against the state variable
+    if(this.state && this.state.hasOwnProperty('active')){
+        return this.state.active
     }
 
-    return {
-      active: 0
-    };
-
+    return undefined
   },
   render() {
     var ulStyle = assign({
@@ -44,23 +36,28 @@ var ExpandableNavMenu = React.createClass({
     var classes = "nav navbar-nav " +
       joinClasses(this.props.className, this.props.expanded ? this.props.fullClass : this.props.smallClass);
 
+    let activeIdx = this.calculateActiveIdx()
+    if(this.props.defaultActive && activeIdx === null){
+        activeIdx = this.props.defaultActive
+    }
     return (
       <ul className={classes} style={ulStyle}>
-        {React.Children.map(this.props.children, this.renderMenuItems)}
+        {
+            React.Children.map(this.props.children, (child, index) =>{
+                return React.cloneElement(child, {
+                    expanded: this.props.expanded,
+                    active: activeIdx ? activeIdx === index : undefined,
+                    key: child.key ? child.key : index,
+                    ref: child.ref,
+                    onSelect: this.handleSelect.bind(null, index)
+                });
+            })
+        }
       </ul>
     );
   },
   handleSelect(i) {
     this.setState({active: i});
-  },
-  renderMenuItems(child, i) {
-    return React.addons.cloneWithProps(child, {
-      expanded: this.props.expanded,
-      active: this.state.active === i,
-      key: child.key ? child.key : i,
-      ref: child.ref,
-      onSelect: this.handleSelect.bind(null, i)
-    });
   }
 });
 

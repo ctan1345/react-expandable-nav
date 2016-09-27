@@ -1,7 +1,7 @@
 'use strict';
 
-var React = require('react/addons'),
-    ReactTestUtils = React.addons.TestUtils;
+var React = require('react'),
+        ReactTestUtils = require('react-addons-test-utils');
 
 var chai = require('chai');
 var expect = chai.expect;
@@ -42,13 +42,13 @@ describe('ExpandableNavMenu', function() {
     var instance = ReactTestUtils.renderIntoDocument(
       <ExpandableNavMenu fullClass={'full'} expanded={true} />
     );
-    expect(ReactTestUtils.findRenderedDOMComponentWithTag(instance, 'ul').props.className.split(' ')).to.contain('full');
+    expect(ReactTestUtils.findRenderedDOMComponentWithTag(instance, 'ul').classList.contains('full')).to.equal(true);
   });
 
   it('accepts smallClass prop as a string', function() {
     var instance = ReactTestUtils.renderIntoDocument(
       <ExpandableNavMenu smallClass={'small'} expanded={false} />
     );
-    expect(ReactTestUtils.findRenderedDOMComponentWithTag(instance, 'ul').props.className.split(' ')).to.contain('small');
+    expect(ReactTestUtils.findRenderedDOMComponentWithTag(instance, 'ul').classList.contains('small')).to.equal(true)
   });
 });

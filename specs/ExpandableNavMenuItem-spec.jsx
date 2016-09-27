@@ -1,7 +1,7 @@
 'use strict';
 
-var React = require('react/addons'),
-    ReactTestUtils = React.addons.TestUtils;
+var React = require('react'),
+        ReactTestUtils = require('react-addons-test-utils');
 
 var chai = require('chai');
 var expect = chai.expect;
@@ -18,7 +18,7 @@ describe('ExpandableNavMenuItem', function() {
     var instance = ReactTestUtils.renderIntoDocument(
       <ExpandableNavMenuItem tooltip={"test"} expanded={false} jquery={jquery} />
     );
-    expect(instance.refs.link.props['data-toggle']).to.exist;
+    expect(instance.refs.link.dataset).to.have.a.property('toggle').that.equals('menuitem-tooltip');
   });
 
   it('accepts active prop and assign "active" class to its when it is true', function() {
@@ -30,7 +30,7 @@ describe('ExpandableNavMenuItem', function() {
       </ExpandableNavMenu>
     );
 
-    expect(ReactTestUtils.findRenderedDOMComponentWithTag(instance.refs.c, 'li').props.className).to.contain('active');
+    expect(ReactTestUtils.findRenderedDOMComponentWithTag(instance.refs.c, 'li').classList.contains('active')).to.equal(true);
 
   });
 });

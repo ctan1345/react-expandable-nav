@@ -1,7 +1,7 @@
 'use strict';
 
-var React = require('react/addons'),
-    ReactTestUtils = React.addons.TestUtils;
+var React = require('react'),
+        ReactTestUtils = require('react-addons-test-utils');
 
 var chai = require('chai');
 var expect = chai.expect;
@@ -14,6 +14,7 @@ describe('ExpandableNavHeader', function() {
     var  instance = ReactTestUtils.renderIntoDocument(
       <ExpandableNavHeader fullStyle={{full: 'full'}} expanded={true} />
     );
+
     expect(instance.refs.navItem.props.fullStyle).to.contain({full: 'full'});
   });
 
@@ -28,13 +29,13 @@ describe('ExpandableNavHeader', function() {
     var instance = ReactTestUtils.renderIntoDocument(
       <ExpandableNavHeader fullClass={"full"} expanded={true} />
     );
-    expect(ReactTestUtils.findRenderedDOMComponentWithClass(instance, 'navbar-header').props.className.split(' ')).to.contain('full');
+    expect(ReactTestUtils.findRenderedDOMComponentWithClass(instance, 'navbar-header').classList.contains('full')).to.equal(true)
   });
 
   it('accepts smallClass prop as a string', function() {
     var instance = ReactTestUtils.renderIntoDocument(
       <ExpandableNavHeader smallClass={"small"} expanded={false} />
     );
-    expect(ReactTestUtils.findRenderedDOMComponentWithClass(instance, 'navbar-header').props.className.split(' ')).to.contain('small');
+    expect(ReactTestUtils.findRenderedDOMComponentWithClass(instance, 'navbar-header').classList.contains('small')).to.equal(true)
   });
 });

@@ -1,8 +1,6 @@
 /*jslint browser: true */
-
-'use strict';
-
 var React = require('react'),
+    render = require('react-dom').render;
     App = require('./app');
 
-React.render(<App />, document.body);
+render(<App />, document.getElementById('content'));
